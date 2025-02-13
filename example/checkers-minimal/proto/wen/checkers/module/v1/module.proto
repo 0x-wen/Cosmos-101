@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+// 包声明,定义了消息的命名空间,使用版本号(v1)便于后续版本管理 
+package wen.checkers.module.v1;
+
+// import "cosmos/app/v1alpha1/module.proto";
+// 导入 Cosmos SDK 的模块定义, 提供了必要的模块配置选项
+import "cosmos/app/v1alpha1/module.proto";
+
+// Module is the app config object of the module.
+// Learn more: https://docs.cosmos.network/main/building-modules/depinject
+message Module {
+  // 指定模块的 Go 导入路径, 用于代码生成和依赖管理
+  option (cosmos.app.v1alpha1.module) = {
+    go_import : "github.com/wen/checkers"
+  };
+
+  // authority defines the custom module authority.
+  // if not set, defaults to the governance module.
+  string authority = 1;
+}
